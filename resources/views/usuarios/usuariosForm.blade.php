@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Registrar usuario</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('contenido')
     <h1>Registrar</h1>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    </div>
-    @endif
+    
     @if(isset($usuario))
         <form action="{{ route('usuario.update', [$usuario])}}"  method="POST">
             @method('patch')
@@ -74,4 +62,4 @@
 
         <input type="submit" value="Enviar"><br>
     </form>
-	</header>
+@endsection

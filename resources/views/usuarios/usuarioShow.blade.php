@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>Usuario</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('contenido')
     <h1>Información Usuario</h1>
-    <a href="{{ route('usuario.edit', [$usuario]) }}">Editar Paciente</a><br>
-    <form action="{{ route('usuario.destroy', [$usuario])}}" method="POST">
-        @method('DELETE')
-        @csrf
-        <input type="submit" value="Eliminar"><br>
-    </form>
+    
     <table>
         <tr>
             <th>ID</th>
@@ -36,4 +27,19 @@
         </tr>
 
     </table>
-	</header>
+
+    <form action="{{ route('usuario.edit', [$usuario])}}" method="POST">
+    @method('GET')
+    @csrf
+    <br><input type="submit" value="Editar"> 
+    </form>
+    <form action="{{ route('usuario.destroy', [$usuario])}}" method="POST">
+        @method('DELETE')
+        @csrf
+        <input type="submit" value="Eliminar">
+    </form>
+    <form action="{{ route('usuario.index')}}" method="POST">
+        @method('GET')
+         <input type="submit" value="Regresar">
+    </form>
+@endsection
