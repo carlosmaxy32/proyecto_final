@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.fondo')
 
 @section('contenido')
     <h1>Información Usuario</h1>
@@ -17,7 +17,7 @@
 
         <tr>
             <td>{{ $usuario->id }}</td>
-            <td>{{ $usuario->nombre }}</td>
+            <td>{{ $usuario->name }}</td>
             <td>{{ $usuario->apellidoP }}</td>
             <td>{{ $usuario->apellidoM }}</td>
             <td>{{ $usuario->sexo }}</td>

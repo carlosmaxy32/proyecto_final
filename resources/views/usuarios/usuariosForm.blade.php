@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.fondo')
 
 @section('contenido')
     <h1>Registrar</h1>
@@ -10,8 +10,8 @@
         <form action="{{ route('usuario.store') }}"  method="POST">
     @endif
         @csrf
-        <label for= "nombre"> Nombre(s): </label>
-        <input type="text" name="nombre" value="{{ old('nombre') ?? $usuario->nombre ?? ''}}"><br>
+        <label for= "name"> Nombre(s): </label>
+        <input type="text" name="name" value="{{ old('name') ?? $usuario->name ?? ''}}"><br>
         @error('nombre')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -43,7 +43,7 @@
         @enderror
 
         <label for="telefono">Teléfono: </label>
-        <input type="tel" name="telefono" value="{{ old('telefono') ?? $usuario->telefono ?? ''}}"><br>
+        <input type="text" name="telefono" value="{{ old('telefono') ?? $usuario->telefono ?? ''}}"><br>
         @error('telefono')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror

@@ -40,7 +40,7 @@ class UsuarioController extends Controller
             'tipousuario' => $request->tipousuario ?? 3
         ]);
         $request->validate([
-            'nombre'=>'required|min:2|max:255|regex:/^[a-zA-Z\s]+$/u',
+            'name'=>'required|min:2|max:255|regex:/^[a-zA-Z\s]+$/u',
             'apellidoP'=>'required|min:2|max:40|alpha',
             'apellidoM'=>'required|min:2|max:40|alpha',
             'sexo'=>'required|min:5|max:6|alpha',
@@ -90,7 +90,7 @@ class UsuarioController extends Controller
             'tipousuario' => $usuario->tipousuario
         ]);
         $request->validate([
-            'nombre'=>'required|min:2|max:255|regex:/^[a-zA-Z\s]+$/u',
+            'name'=>'required|min:2|max:255|regex:/^[a-zA-Z\s]+$/u',
             'apellidoP'=>'required|min:2|max:40|alpha',
             'apellidoM'=>'required|min:2|max:40|alpha',
             'sexo'=>'required|min:5|max:6|alpha',

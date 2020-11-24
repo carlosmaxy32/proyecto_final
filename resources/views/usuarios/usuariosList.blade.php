@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.fondo')
 
 @section('contenido')
 <h1>Usuarios</h1>
@@ -17,7 +17,7 @@
         @foreach($users as $usuario)
             <tr>
                 <td>{{ $usuario->id }}</td>
-                <td><a href="{{ route('usuario.show', [$usuario->id]) }}">{{ $usuario->nombre }}</a></td>
+                <td><a href="{{ route('usuario.show', [$usuario->id]) }}">{{ $usuario->name }}</a></td>
                 <td>{{ $usuario->apellidoP }}</td>
                 <td>{{ $usuario->apellidoM }}</td>
                 <td>{{ $usuario->email }}</td>
