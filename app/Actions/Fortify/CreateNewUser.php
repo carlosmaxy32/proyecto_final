@@ -21,8 +21,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-         /*agregar tipo usuario*/
-         $input['tipousuario'] = $input['tipousuario'] ?? 3;
+         
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'apellidoP'=>'required|min:2|max:40|alpha',
@@ -32,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'telefono'=>'required|min:10|max:17|regex:/^[\+\d][0-9\s]+$/',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
+            'tipousuario'=>'required|numeric',
         ])->validate();
         
         //Mail::to($input['email'])->send(new RegistroExito($input));

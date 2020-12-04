@@ -27,6 +27,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'telefono'=>'required|min:10|max:17|regex:/^[\+\d][0-9\s]+$/',
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'image', 'max:1024'],
+            'tipousuario'=>'required|numeric',
         ])->validateWithBag('updateProfileInformation');
 
         if (isset($input['photo'])) {

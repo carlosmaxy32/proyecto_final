@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <x-jet-authentication-card-logo /> 
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -78,6 +78,17 @@
                 <x-jet-label for="password_confirmation" value="{{ __('Confirmar Contraseña') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+
+            <div class="mt-4">
+                <x-jet-label for="tipousuario" value="{{ __('Soy...') }}" />
+                <select name="tipousuario">
+                    <option value="1" selected>Paciente</option> 
+                    <option value="2">Dentista</option>                
+                </select>
+            </div>
+            @error('tipousuario')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
