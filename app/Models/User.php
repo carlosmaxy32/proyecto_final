@@ -37,6 +37,11 @@ class User extends Authenticatable
         'tipousuario'
     ];
 
+    public function consultorio()
+    {
+        return $this->hasOne('App\Consultorio');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

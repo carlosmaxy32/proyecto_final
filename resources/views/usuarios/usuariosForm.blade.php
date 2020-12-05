@@ -12,7 +12,7 @@
         @csrf
         <label for= "name"> Nombre(s): </label>
         <input type="text" name="name" value="{{ old('name') ?? $usuario->name ?? ''}}"><br>
-        @error('nombre')
+        @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 

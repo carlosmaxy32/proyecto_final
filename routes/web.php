@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsultorioController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 /*
@@ -19,6 +20,7 @@ Route::get('/', function () {
 
 
 Route::resource('usuario', UsuarioController::class);
+Route::resource('consultorio', ConsultorioController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

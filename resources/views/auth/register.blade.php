@@ -4,8 +4,6 @@
             <x-jet-authentication-card-logo /> 
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
-
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -13,8 +11,8 @@
                 <x-jet-label for="name" value="{{ __('Nombre(s)') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-            @error('nombre')
-            <div class="alert alert-danger">{{ $message }}</div>
+            @error('name')
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror   
 
             <div class="mt-4">
@@ -22,7 +20,7 @@
                 <x-jet-input id="apellidoP" class="block mt-1 w-full" type="text" name="apellidoP" :value="old('apellidoP')" required />
             </div>
             @error('apellidoP')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
@@ -30,7 +28,7 @@
                 <x-jet-input id="apellidoM" class="block mt-1 w-full" type="text" name="apellidoM" :value="old('apellidoM')" required />
             </div>
             @error('apellidoM')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
@@ -39,7 +37,7 @@
                 <input id="sexoM" type="radio" name="sexo" value="Mujer" {{ old('sexo') == 'Mujer' ? 'checked' : ''}} {{ isset($usuario) && $usuario->sexo == 'Mujer' ? 'checked' : ''}} required />Mujer
             </div>
             @error('sexo')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
@@ -47,15 +45,15 @@
                 <x-jet-input id="fechaN" class="block mt-1 w-full" type="date" name="fechaN" :value="old('fechaN')" required />
             </div>
             @error('fechaN')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
                 <x-jet-label for="telefono" value="{{ __('Teléfono') }}" />
-                <x-jet-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('apellidoM')" required />
+                <x-jet-input id="telefono" class="block mt-1 w-full" type="text" name="telefono" :value="old('telefono')" required />
             </div>
             @error('telefono')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
@@ -63,7 +61,7 @@
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
             @error('email')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
@@ -71,7 +69,7 @@
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
             @error('password')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="mt-4">
@@ -82,12 +80,12 @@
             <div class="mt-4">
                 <x-jet-label for="tipousuario" value="{{ __('Soy...') }}" />
                 <select name="tipousuario">
-                    <option value="1" selected>Paciente</option> 
-                    <option value="2">Dentista</option>                
+                    <option value="1" selected {{ old('tipousuario') == '1' ? 'selected' : ''}}>Paciente</option> 
+                    <option value="2" {{ old('tipousuario') == '2' ? 'selected' : ''}}>Dentista</option>                
                 </select>
             </div>
             @error('tipousuario')
-            <div class="alert alert-danger">{{ $message }}</div>
+            <div class="alert alert-danger mb-4">{{ $message }}</div>
             @enderror
 
             <div class="flex items-center justify-end mt-4">

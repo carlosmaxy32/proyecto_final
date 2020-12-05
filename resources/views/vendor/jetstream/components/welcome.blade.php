@@ -88,7 +88,7 @@
     @if(Auth::user()->tipousuario == 2)
     <div class="p-6">
         <div class="flex items-center">
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laravel.com/docs">Información Adicional</a></div>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="{{ route('consultorio.index') }}">Información Adicional</a></div>
         </div>
 
         <div class="ml-12">
@@ -97,7 +97,7 @@
                 colonia, municipio y estado.
             </div>
 
-            <a href="https://laravel.com/docs">
+            <a href="{{ route('consultorio.index') }}">
                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                         <div>Ir a información adicional</div>
 
