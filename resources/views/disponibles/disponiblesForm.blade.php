@@ -8,7 +8,7 @@
 
    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"> 
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             @if(isset($disponible))
                 <form action="{{ route('disponible.update', [$disponible])}}"  method="POST">
                     @method('patch')
@@ -16,7 +16,11 @@
                 <form action="{{ route('disponible.store') }}"  method="POST">
             @endif
                     @csrf
-
+                    Nota importante: Si cambió las fechas de disponibilidad y tenía pacientes citados que le afecten este cambio, comuniquese con ellos
+                    para informarles sobre el incoveniente, además usted puede cambiarle la fecha de cita en
+                    el apartado de citas, siempre y cuando tenga a su paciente informado. 
+                    <br> 
+                    <br>   
                     <div>
                         <x-jet-label for="fechaDe" value="{{ __('Fecha De') }}" />
                         <x-jet-input id="fechaDe" class="block mt-1 w-full" type="date" name="fechaDe" :value="old('fechaDe') ?? $disponible->fechaDe ?? ''" required/>
