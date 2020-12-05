@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Consultorio');
     }
 
+    public function disponible()
+    {
+        return $this->hasOne('App\Disponible');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

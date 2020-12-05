@@ -111,7 +111,7 @@
 
     <div class="p-6">
         <div class="flex items-center">
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laravel.com/docs">Disponibilidad</a></div>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="{{ route('disponible.index') }}">Disponibilidad</a></div>
         </div>
 
         <div class="ml-12">
@@ -122,7 +122,7 @@
                 Nota: Hay que estar actualizando esta información constantemente.
             </div>
 
-            <a href="https://laravel.com/docs">
+            <a href="{{ route('disponible.index') }}">
                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                         <div>Ir a disponibilidad</div>
 
