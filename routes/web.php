@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ConsultorioController;
+use App\Http\Controllers\Dentista_pacienteController;
 use App\Http\Controllers\DisponibleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
@@ -23,6 +24,7 @@ Route::get('/', function () {
 Route::resource('usuario', UsuarioController::class);
 Route::resource('consultorio', ConsultorioController::class);
 Route::resource('disponible', DisponibleController::class);
+Route::resource('contactos', Dentista_pacienteController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

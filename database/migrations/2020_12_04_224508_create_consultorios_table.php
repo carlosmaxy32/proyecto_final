@@ -15,7 +15,7 @@ class CreateConsultoriosTable extends Migration
     {
         Schema::create('consultorios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('cascade')->unique(); //Borrar datos si se borra el usuario Dentista
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //Borrar datos si se borra el usuario Dentista
             $table->string('direccion');
             $table->string('colonia');
             $table->string('municipio');

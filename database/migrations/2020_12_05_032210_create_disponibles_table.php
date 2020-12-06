@@ -15,7 +15,7 @@ class CreateDisponiblesTable extends Migration
     {
         Schema::create('disponibles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('cascade')->unique(); //Borrar datos si se borra el usuario Dentista
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //Borrar datos si se borra el usuario Dentista
             $table->date('fechaDe');
             $table->date('fechaA');
             $table->time('horaDe', 0);

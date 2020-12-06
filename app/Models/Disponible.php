@@ -19,6 +19,6 @@ class Disponible extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne(User::class);
     }
 }

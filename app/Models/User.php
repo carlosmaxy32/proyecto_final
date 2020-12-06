@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use PhpParser\Builder\Class_;
 
 class User extends Authenticatable
 {
@@ -39,13 +40,21 @@ class User extends Authenticatable
 
     public function consultorio()
     {
-        return $this->hasOne('App\Consultorio');
+        return $this->hasOne(Consultorio::class);
     }
 
     public function disponible()
     {
-        return $this->hasOne('App\Disponible');
+        return $this->hasOne(Disponible::class);
     }
+
+
+    public function contactos()
+    {
+        return $this->belongsToMany(Dentista_paciente::class);
+    }
+
+    
 
     /**
      * The attributes that should be hidden for arrays.

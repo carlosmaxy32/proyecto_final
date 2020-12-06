@@ -53,9 +53,9 @@
         
         <div class="flex items-center">
             @if(Auth::user()->tipousuario == 1)
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laracasts.com">Mis Dentistas</a></div>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="{{ route('contactos.index') }}">Mis Dentistas</a></div>
             @elseif(Auth::user()->tipousuario == 2)
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laracasts.com">Mis Pacientes</a></div>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="{{ route('contactos.index') }}">Mis Pacientes</a></div>
             @endif
         </div>
 
@@ -71,7 +71,7 @@
                 Nota: Usted no podrá ver pacientes hasta que uno de ellos lo agregue a usted en su listado de mis dentistas.
             </div>
             @endif
-            <a href="https://laracasts.com">
+            <a href="{{ route('contactos.index') }}">
                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                         @if(Auth::user()->tipousuario == 1)
                         <div>Ir a mis dentistas</div>
