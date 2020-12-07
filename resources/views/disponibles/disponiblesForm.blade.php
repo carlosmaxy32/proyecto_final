@@ -33,7 +33,7 @@
 
                     <div class="mt-4">
                         <x-jet-label for="fechaA" value="{{ __('Fecha A') }}" />
-                        <x-jet-input id="fechaA" class="block mt-1 w-full" type="date"  name="fechaA" :value="old('fechaA') ?? $disponible->fechaA ?? ''"  required />
+                        <x-jet-input id="fechaA" class="block mt-1 w-full" type="date"  name="fechaA" min="{{ date('Y-m-d') }}" :value="old('fechaA') ?? $disponible->fechaA ?? ''"  required />
                     </div>
                     @error('fechaA')
                     <div class="alert alert-danger">{{ $message }}</div>
