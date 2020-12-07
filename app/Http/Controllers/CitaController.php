@@ -14,7 +14,9 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('index', Cita::class);
+        $citas = Cita::all();
+        
     }
 
     /**
@@ -24,7 +26,7 @@ class CitaController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Cita::class);
     }
 
     /**

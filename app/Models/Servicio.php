@@ -17,4 +17,9 @@ class Servicio extends Model
     {
         return $this->nombre . " ". $this->descripcion;
     }
+
+    public function citas()
+    {
+        return $this->hasMany(Cita::class);
+    }
 }

@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Cita extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'contacto_id',
+        'fecha',      
+        'hora', 
+        'servicio_id',   
+    ];
+    function servicio()
+    {
+        return $this->belongsToMany(Servicio::class);
+    }
+
+    public function contactos()
+    {
+        return $this->hasMany(Dentista_paciente::class, 'contacto_id');
+    }
 }

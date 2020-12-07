@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function contactos()
     {
-        return $this->belongsToMany(Dentista_paciente::class);
+        return $this->hasMany(Dentista_paciente::class);
     }
 
     

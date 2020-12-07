@@ -5,6 +5,8 @@ use App\Http\Controllers\Dentista_pacienteController;
 use App\Http\Controllers\DisponibleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Cita;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +27,7 @@ Route::resource('usuario', UsuarioController::class);
 Route::resource('consultorio', ConsultorioController::class);
 Route::resource('disponible', DisponibleController::class);
 Route::resource('contactos', Dentista_pacienteController::class);
+Route::resource('cita', Cita::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -17,6 +17,11 @@ class Dentista_paciente extends Model
 
     public function usuarios()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function cita()
+    {
+        return $this->belongsToMany(Cita::class);
     }
 }
