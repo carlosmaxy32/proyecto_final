@@ -39,6 +39,7 @@ class DisponibleController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->all());
         $request->merge([
             'user_id' => Auth::id()
         ]);

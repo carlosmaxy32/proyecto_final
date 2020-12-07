@@ -21,10 +21,11 @@
                     para informarles sobre el incoveniente, además usted puede cambiarle la fecha de cita en
                     el apartado de citas, siempre y cuando tenga a su paciente informado. 
                     <br> 
+
                     <br>   
                     <div>
                         <x-jet-label for="fechaDe" value="{{ __('Fecha De') }}" />
-                        <x-jet-input id="fechaDe" class="block mt-1 w-full" type="date" name="fechaDe" :value="old('fechaDe') ?? $disponible->fechaDe ?? ''" required/>
+                        <x-jet-input id="fechaDe" class="block mt-1 w-full" type="date" name="fechaDe" min="{{ date('Y-m-d') }}" :value="old('fechaDe') ?? $disponible->fechaDe ?? ''" required/>
                     </div>
                     @error('fechaDe')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -32,7 +33,7 @@
 
                     <div class="mt-4">
                         <x-jet-label for="fechaA" value="{{ __('Fecha A') }}" />
-                        <x-jet-input id="fechaA" class="block mt-1 w-full" type="date" min="old('fechaDe')" name="fechaA" :value="old('fechaA') ?? $disponible->fechaA ?? ''"  required />
+                        <x-jet-input id="fechaA" class="block mt-1 w-full" type="date"  name="fechaA" :value="old('fechaA') ?? $disponible->fechaA ?? ''"  required />
                     </div>
                     @error('fechaA')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -40,7 +41,7 @@
 
                     <div class="mt-4">
                         <x-jet-label for="horaDe" value="{{ __('Hora De') }}" />
-                        <x-jet-input id="horaDe" class="block mt-1 w-full" type="time" name="horaDe" :value="old('horaDe') ?? $disponible->horaDe ?? ''" required />
+                        <x-jet-input id="horaDe" class="block mt-1 w-full" type="time" name="horaDe"  step="1800" :value="old('horaDe') ?? $disponible->horaDe ?? '00:00'"  required />
                     </div>
                     @error('horaDe')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -48,7 +49,7 @@
 
                     <div class="mt-4">
                         <x-jet-label for="horaA" value="{{ __('Hora A') }}" />
-                        <x-jet-input id="horaA" class="block mt-1 w-full" type="time" min="old('horaDe')" name="horaA" :value="old('horaA') ?? $disponible->horaA ?? ''" required />
+                        <x-jet-input id="horaA" class="block mt-1 w-full" type="time"  name="horaA" step="1800" :value="old('horaA') ?? $disponible->horaA ?? '00:00'" required />
                     </div>
                     @error('horaA')
                     <div class="alert alert-danger">{{ $message }}</div>
