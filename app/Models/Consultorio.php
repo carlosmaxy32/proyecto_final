@@ -41,6 +41,9 @@ class Consultorio extends Model
         return $this->attributes['estado'] = ucwords(strtolower($value));
     }
 
-    
+    public function getLocalizacionAttribute()
+    {
+        return $this->colonia . ", ". $this->municipio . ", " . $this->estado;
+    }
     
 }
