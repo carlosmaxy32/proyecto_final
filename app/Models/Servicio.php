@@ -12,4 +12,9 @@ class Servicio extends Model
         'nombre',
         'descripcion',        
     ];
+
+    public function getServicioAttribute()
+    {
+        return $this->nombre . " ". $this->descripcion;
+    }
 }

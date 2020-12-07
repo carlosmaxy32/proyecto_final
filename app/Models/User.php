@@ -55,6 +55,10 @@ class User extends Authenticatable
     }
 
     
+    public function getNombreCompletoAttribute()
+    {
+        return $this->name . " ". $this->apellidoP . " " . $this->apellidoM;
+    }
 
     /**
      * The attributes that should be hidden for arrays.
