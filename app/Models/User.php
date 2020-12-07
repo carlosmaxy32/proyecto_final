@@ -60,6 +60,21 @@ class User extends Authenticatable
         return $this->name . " ". $this->apellidoP . " " . $this->apellidoM;
     }
 
+    public function setNameAttribute($value)
+    {
+        return $this->attributes['name'] = ucwords(strtolower($value));
+    }
+
+    public function setApellidoPAttribute($value)
+    {
+        return $this->attributes['apellidoP'] = ucfirst(strtolower($value));
+    }
+
+    public function setApellidoMAttribute($value)
+    {
+        return $this->attributes['apellidoM'] = ucfirst(strtolower($value));
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

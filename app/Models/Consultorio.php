@@ -21,5 +21,26 @@ class Consultorio extends Model
         return $this->hasOne(User::class);
     }
 
+    public function setDireccionAttribute($value)
+    {
+        return $this->attributes['direccion'] = ucwords(strtolower($value));
+    }
+
+    public function setColoniaAttribute($value)
+    {
+        return $this->attributes['colonia'] = ucwords(strtolower($value));
+    }
+
+    public function setMunicipioAttribute($value)
+    {
+        return $this->attributes['municipio'] = ucwords(strtolower($value));
+    }
+
+    public function setEstadoAttribute($value)
+    {
+        return $this->attributes['estado'] = ucwords(strtolower($value));
+    }
+
+    
     
 }

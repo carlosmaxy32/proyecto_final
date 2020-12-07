@@ -96,7 +96,15 @@ class ConsultorioController extends Controller
             'municipio'=>'required|min:2|max:40|regex:/^[a-zA-Z\s]+$/u',
             'estado'=>'required|min:5|max:40|regex:/^[a-zA-Z\s]+$/u',    
         ]);
-        Consultorio::where('user_id', $consultorio->user_id)->update($request->except('_method', '_token'));
+
+        $consultorio->forceFill([
+            'user_id' => $request->user_id,
+            'direccion' => $request->direccion,
+            'colonia' => $request->colonia,
+            'municipio' => $request->municipio,
+            'estado' => $request->estado,            
+        ])->save();
+        //Consultorio::where('user_id', $consultorio->user_id)->update($request->except('_method', '_token'));
         return redirect(route('dashboard'));
     }
 
