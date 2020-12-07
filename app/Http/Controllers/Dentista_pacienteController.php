@@ -100,7 +100,8 @@ class Dentista_pacienteController extends Controller
                         {
                             if($a->id == $b->id)
                             {
-                                $contacto = $a;
+                                if($contacto != $a)
+                                    return redirect(route('contactos.index'));
                                 $usuario = User::where('id', $contacto->dentista_id)->first();
                                 $consultorio = Consultorio::where('user_id', $usuario->id)->first();
                                 return view('dentistapacientes.dentistapacienteShow', compact('contacto', 'usuario', 'consultorio'));
@@ -125,7 +126,8 @@ class Dentista_pacienteController extends Controller
                         {
                             if($a->id == $b->id)
                             {
-                                $contacto = $a;
+                                if($contacto != $a)
+                                    return redirect(route('contactos.index'));
                                 $usuario = User::where('id', $contacto->paciente_id)->first();
                                 return view('dentistapacientes.dentistapacienteShow', compact('contacto', 'usuario'));
                             }
