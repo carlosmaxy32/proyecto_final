@@ -77,6 +77,15 @@
                             </x-jet-button>
                         </div>
                 </form>
+                <form action="{{ route('cita.edit', [$cita] ) }}"  method="POST">
+                        @method('GET')
+                        @csrf
+                        <div class="flex items-center justify-end mt-4" style = "float: right">
+                            <x-jet-button type="submit" class="ml-4">
+                                {{ __('Editar') }}
+                            </x-jet-button>
+                        </div>
+                </form>
                 <form action="{{ route('cita.index')}}"  method="POST">
                     @method('GET')    
                     <div class="flex items-center justify-end mt-4" style = "float: right">

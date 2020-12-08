@@ -30,8 +30,11 @@
                             <tr>
                                 @foreach($usuarios as $usuario)
                                     @if($usuario->id == $contacto->paciente_id)
-                                        <td>{{ $usuario->nombre_completo }}</td>                               
-                                    @elseif($usuario->id == $contacto->dentista_id)
+                                        <td>{{ $usuario->nombre_completo }}</td>     
+                                    @endif
+                                @endforeach    
+                                @foreach($usuarios as $usuario)       
+                                    @if($usuario->id == $contacto->dentista_id)
                                         <td>{{ $usuario->nombre_completo }}</td>
                                     @endif
                                 @endforeach

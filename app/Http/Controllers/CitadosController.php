@@ -45,10 +45,12 @@ class CitadosController extends Controller
         $contacto = Dentista_paciente::find($id->contacto_id);
         $disponible = Disponible::where('user_id', $contacto->dentista_id)->first();
         $servicios = Servicio::all();
-        if($disponible->activo == 1)
-            return view('citas.citaForm', compact('contacto', 'servicios', 'disponible'));
-        else
-            return redirect(route('cita.index'));
+        if(Disponible::where('user_id', $contacto->dentista_id)->exists())
+        {
+            if($disponible->activo == 1)
+                return view('citas.citaForm', compact('contacto', 'servicios', 'disponible'));
+        }        
+            return redirect(route('cita.index')); 
     }
 
     /**

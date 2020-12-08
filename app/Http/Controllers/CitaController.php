@@ -72,16 +72,31 @@ class CitaController extends Controller
      */
     public function show(int $id)
     {
-        $cita = Cita::find($id);
+        if(Cita::where('id', $id)->exists())
+        {   
+            $cita = Cita::find($id);
+            $cont = Dentista_paciente::find($cita->contacto_id);
+            if(Auth::user()->tipousuario == 1)
+                $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
+            else if(Auth::user()->tipousuario == 2)
+                $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
+            
+            foreach($contactos as $con)
+            {
+                if($con == $cont)
+                {
+                    $usuarios = User::all();
+                    $consultorios = Consultorio::all();        
+                    return view('citas.citaShow', compact('contactos', 'consultorios', 'usuarios', 'cita'));
+                }
+            }
+            
+        }
+        return redirect(route('cita.index')); 
         
-        if(Auth::user()->tipousuario == 1)
-            $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
-        else if(Auth::user()->tipousuario == 2)
-            $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
-        $usuarios = User::all();
-        $consultorios = Consultorio::all();
         
-        return view('citas.citaShow', compact('contactos', 'consultorios', 'usuarios', 'cita'));
+        
+        
     }
 
     /**
@@ -90,9 +105,32 @@ class CitaController extends Controller
      * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cita $cita)
+    public function edit(int $id)
     {
-        //
+        if(Cita::where('id', $id)->exists())
+        {
+            $cita = Cita::find($id);
+            $contacto = Dentista_paciente::find($cita->contacto_id);
+            if(Auth::user()->tipousuario == 1)
+                $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
+            else if(Auth::user()->tipousuario == 2)
+                $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
+            
+            foreach($contactos as $con)
+            {
+                if($con == $contacto)
+                {
+                    $disponible = Disponible::where('user_id', $contacto->dentista_id)->first();
+                    $servicios = Servicio::all();
+                    if(Disponible::where('user_id', $contacto->dentista_id)->exists())
+                    {
+                        if($disponible->activo == 1)
+                            return view('citas.citaForm', compact('cita', 'contacto', 'servicios', 'disponible'));
+                    }  
+                }
+            }            
+        }              
+        return redirect(route('cita.index'));
     }
 
     /**
@@ -102,9 +140,17 @@ class CitaController extends Controller
      * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cita $cita)
+    public function update(Request $request, int $id)
     {
-        //
+        $cita=Cita::find($id);
+        
+        $cita->forceFill([
+            'contacto_id' => $request->contacto_id,
+            'fecha' => $request->fecha,
+            'hora' => $request->hora,
+            'servicio_id' => $request->servicio_id,
+        ])->save();
+        return redirect(route('cita.index'));
     }
 
     /**
