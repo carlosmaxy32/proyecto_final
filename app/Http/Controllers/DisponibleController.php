@@ -77,10 +77,20 @@ class DisponibleController extends Controller
      */
     public function edit(Disponible $disponible)
     {
+        if($disponible == null)
+        {
+            return redirect(route('dashboard'))
+            ->with([
+                'mensaje'=>'No tiene acceso',
+                'alert-type'=>'alert-danger',
+            ]); 
+        }
         if($disponible->user_id == Auth::id())
             return view('disponibles.disponiblesForm', compact('disponible'));
         else
-            return redirect(route('disponible.edit', Disponible::select('id')->where('user_id', Auth::id())->first()));     
+            return redirect(route('disponible.edit', Disponible::select('id')->where('user_id', Auth::id())->first())); 
+        
+        
     }
 
     /**

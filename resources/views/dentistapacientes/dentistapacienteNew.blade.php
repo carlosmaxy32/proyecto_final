@@ -18,7 +18,7 @@
                         <th>Teléfono</th>
                         <th>Colonia</th>
                         <th>Municipio</th>
-                        <th>Teléfono</th>
+                        <th>Estado</th>
                     </tr>
                     @foreach($usuarios as $usuario)
                     <tr>
