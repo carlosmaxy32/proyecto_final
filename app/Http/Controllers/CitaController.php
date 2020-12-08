@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cita;
 use App\Models\Consultorio;
 use App\Models\Dentista_paciente;
+use App\Models\Disponible;
 use App\Models\User;
 use App\Models\Servicio;
 use App\Policies\CitaPolicy;
@@ -46,9 +47,9 @@ class CitaController extends Controller
         else if(Auth::user()->tipousuario == 2)
             $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
         $usuarios = User::all();
-        $servicios = Servicio::all();
-        return view('citas.citaList', compact('contactos', 'usuarios', 'servicios'));
+        return view('citas.citaSelect', compact('contactos', 'usuarios'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +59,9 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        Cita::create($request->all());        
+        return redirect(route('cita.index'));
     }
 
     /**
