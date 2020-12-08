@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ConsultorioController;
 use App\Http\Controllers\Dentista_pacienteController;
 use App\Http\Controllers\DisponibleController;
@@ -27,7 +28,7 @@ Route::resource('usuario', UsuarioController::class);
 Route::resource('consultorio', ConsultorioController::class);
 Route::resource('disponible', DisponibleController::class);
 Route::resource('contactos', Dentista_pacienteController::class);
-Route::resource('cita', Cita::class);
+Route::resource('cita', CitaController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

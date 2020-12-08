@@ -22,6 +22,6 @@ class Dentista_paciente extends Model
 
     public function cita()
     {
-        return $this->belongsToMany(Cita::class);
+        return $this->belongsTo(Cita::class);
     }
 }

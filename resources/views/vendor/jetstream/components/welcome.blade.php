@@ -29,7 +29,7 @@
 <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
     <div class="p-6">
         <div class="flex items-center">
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laravel.com/docs">Citas</a></div>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="{{ route('cita.index') }}">Citas</a></div>
         </div>
 
         <div class="ml-12">
@@ -37,7 +37,7 @@
                 En este apartado usted podrá ver una lista de todas sus citas.
             </div>
 
-            <a href="https://laravel.com/docs">
+            <a href="{{ route('cita.index') }}">
                 <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
                         <div>Ir a citas</div>
 

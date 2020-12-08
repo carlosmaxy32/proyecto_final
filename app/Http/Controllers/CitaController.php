@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cita;
+use App\Models\Consultorio;
+use App\Models\Dentista_paciente;
+use App\Models\User;
+use App\Models\Servicio;
+use App\Policies\CitaPolicy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CitaController extends Controller
 {
@@ -14,8 +20,16 @@ class CitaController extends Controller
      */
     public function index()
     {
-        $this->authorize('index', Cita::class);
+        /*Descomentar paraaplicar politica */
+        //$this->authorize('index', Cita::class);
+        if(Auth::user()->tipousuario == 1)
+            $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
+        else if(Auth::user()->tipousuario == 2)
+            $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
+        $servicios = Servicio::all();        
+        $usuarios = User::all();
         $citas = Cita::all();
+        return view('citas.citaList', compact('contactos', 'servicios', 'usuarios', 'citas'));
         
     }
 

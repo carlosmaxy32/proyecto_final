@@ -14,9 +14,10 @@ class Cita extends Model
         'hora', 
         'servicio_id',   
     ];
+    
     function servicio()
     {
-        return $this->belongsToMany(Servicio::class);
+        return $this->belongsTo(Servicio::class);
     }
 
     public function contactos()
