@@ -9,6 +9,7 @@ use App\Models\Disponible;
 use App\Models\User;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CitadosController extends Controller
 {
@@ -41,7 +42,21 @@ class CitadosController extends Controller
     public function store(Request $id)
     {
         if($id->contacto_id == null)
-            return redirect(route('cita.index'));
+        {
+            if(Auth::user()->tipousuario == 1)
+                return redirect(route('cita.index'))
+                ->with([
+                    'mensaje'=>'Agregue dentistas en su lista de Mis Dentistas',
+                    'alert-type'=>'alert-danger',
+                ]);
+            else if(Auth::user()->tipousuario == 2)
+                return redirect(route('cita.index'))
+                ->with([
+                    'mensaje'=>'Asegurese que tiene pacientes en su lista de Mis Pacientes',
+                    'alert-type'=>'alert-danger',
+                ]);
+        }
+            
         $contacto = Dentista_paciente::find($id->contacto_id);
         $disponible = Disponible::where('user_id', $contacto->dentista_id)->first();
         $servicios = Servicio::all();
@@ -50,7 +65,11 @@ class CitadosController extends Controller
             if($disponible->activo == 1)
                 return view('citas.citaForm', compact('contacto', 'servicios', 'disponible'));
         }        
-            return redirect(route('cita.index')); 
+        return redirect(route('cita.index'))
+        ->with([
+            'mensaje'=>'Dentista no disponible',
+            'alert-type'=>'alert-danger',
+        ]);
     }
 
     /**

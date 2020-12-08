@@ -61,7 +61,11 @@ class CitaController extends Controller
     {
         
         Cita::create($request->all());        
-        return redirect(route('cita.index'));
+        return redirect(route('cita.index'))
+        ->with([
+            'mensaje'=>'Cita creada exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**
@@ -92,7 +96,11 @@ class CitaController extends Controller
             }
             
         }
-        return redirect(route('cita.index')); 
+        return redirect(route('cita.index'))
+        ->with([
+            'mensaje'=>'No tiene autorización',
+            'alert-type'=>'alert-danger',
+        ]); 
         
         
         
@@ -127,10 +135,19 @@ class CitaController extends Controller
                         if($disponible->activo == 1)
                             return view('citas.citaForm', compact('cita', 'contacto', 'servicios', 'disponible'));
                     }  
-                }
+                    return redirect(route('cita.index'))
+                    ->with([
+                        'mensaje'=>'Dentista no disponible, no puede editar su cita',
+                        'alert-type'=>'alert-danger',
+                    ]);
+                }                
             }            
         }              
-        return redirect(route('cita.index'));
+        return redirect(route('cita.index'))
+        ->with([
+            'mensaje'=>'No tiene autorización',
+            'alert-type'=>'alert-danger',
+        ]);
     }
 
     /**
@@ -150,7 +167,11 @@ class CitaController extends Controller
             'hora' => $request->hora,
             'servicio_id' => $request->servicio_id,
         ])->save();
-        return redirect(route('cita.index'));
+        return redirect(route('cita.index'))
+        ->with([
+            'mensaje'=>'Cita editada exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**
@@ -163,6 +184,10 @@ class CitaController extends Controller
     {
         $cita = Cita::find($id);
         $cita->delete();
-        return redirect(route('cita.index'));
+        return redirect(route('cita.index'))
+        ->with([
+            'mensaje'=>'Cita eliminada exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 }

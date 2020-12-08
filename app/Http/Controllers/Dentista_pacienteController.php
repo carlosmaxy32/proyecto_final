@@ -58,7 +58,11 @@ class Dentista_pacienteController extends Controller
                         foreach($contB as $b)
                         {
                             if($a->id == $b->id)
-                                return redirect(route('contactos.index'));
+                                return redirect(route('contactos.index'))
+                                ->with([
+                                    'mensaje'=>'Este usuario ya lo tiene agregado',
+                                    'alert-type'=>'alert-danger',
+                                ]);
                         }
                     }
                 }
@@ -74,7 +78,11 @@ class Dentista_pacienteController extends Controller
         ]);
         
         Dentista_paciente::create($request->all());
-        return redirect(route('contactos.index'));
+        return redirect(route('contactos.index'))
+        ->with([
+            'mensaje'=>'Se agregó el usuario exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**
@@ -101,10 +109,24 @@ class Dentista_pacienteController extends Controller
                             if($a->id == $b->id)
                             {
                                 if($contacto != $a)
-                                    return redirect(route('contactos.index'));
+                                    return redirect(route('contactos.index'))
+                                    ->with([
+                                        'mensaje'=>'No tiene autorización',
+                                        'alert-type'=>'alert-danger',
+                                    ]);
                                 $usuario = User::where('id', $contacto->dentista_id)->first();
-                                $consultorio = Consultorio::where('user_id', $usuario->id)->first();
-                                return view('dentistapacientes.dentistapacienteShow', compact('contacto', 'usuario', 'consultorio'));
+                                
+                                if(Consultorio::where('user_id', $usuario->id)->exists())
+                                {
+                                    $existe = 1;
+                                    $consultorio = Consultorio::where('user_id', $usuario->id)->first();
+                                    return view('dentistapacientes.dentistapacienteShow', compact('contacto', 'usuario', 'consultorio', 'existe'));
+                                }
+                                else
+                                {
+                                    $existe = 2;
+                                    return view('dentistapacientes.dentistapacienteShow', compact('contacto', 'usuario', 'existe'));
+                                }
                             }
                                 
                         }
@@ -127,7 +149,11 @@ class Dentista_pacienteController extends Controller
                             if($a->id == $b->id)
                             {
                                 if($contacto != $a)
-                                    return redirect(route('contactos.index'));
+                                    return redirect(route('contactos.index'))
+                                    ->with([
+                                        'mensaje'=>'No tiene autorización',
+                                        'alert-type'=>'alert-danger',
+                                    ]);
                                 $usuario = User::where('id', $contacto->paciente_id)->first();
                                 return view('dentistapacientes.dentistapacienteShow', compact('contacto', 'usuario'));
                             }
@@ -136,8 +162,13 @@ class Dentista_pacienteController extends Controller
                     }
                 }
             }
-        }          
-        return redirect(route('contactos.index'));
+        }
+               
+        return redirect(route('contactos.index'))
+        ->with([
+            'mensaje'=>'No tiene autorización',
+            'alert-type'=>'alert-danger',
+        ]);
     }
 
     /**
@@ -173,6 +204,10 @@ class Dentista_pacienteController extends Controller
     {
         
         $contacto->delete();
-        return redirect(route('contactos.index'));
+        return redirect(route('contactos.index'))
+        ->with([
+            'mensaje'=>'Se eliminó el usuario exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 }

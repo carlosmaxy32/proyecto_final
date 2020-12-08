@@ -40,22 +40,24 @@
                         <td>{{ $usuario->email }}</td>                        
                     </tr>
                     @if(Auth::user()->tipousuario == 1)
-                    <tr>
-                        <td>Dirección del Consultorio:</td>
-                        <td>{{ $consultorio->direccion }}</td>                        
-                    </tr>
-                    <tr>
-                        <td>Colonia:</td>
-                        <td>{{ $consultorio->colonia }}</td>                        
-                    </tr>
-                    <tr>
-                        <td>Municipio:</td>
-                        <td>{{ $consultorio->municipio }}</td>                        
-                    </tr>
-                    <tr>
-                        <td>Estado:</td>
-                        <td>{{ $consultorio->estado }}</td>                        
-                    </tr>
+                        @if($existe == 1)
+                        <tr>
+                            <td>Dirección del Consultorio:</td>
+                            <td>{{ $consultorio->direccion }}</td>                        
+                        </tr>
+                        <tr>
+                            <td>Colonia:</td>
+                            <td>{{ $consultorio->colonia }}</td>                        
+                        </tr>
+                        <tr>
+                            <td>Municipio:</td>
+                            <td>{{ $consultorio->municipio }}</td>                        
+                        </tr>
+                        <tr>
+                            <td>Estado:</td>
+                            <td>{{ $consultorio->estado }}</td>                        
+                        </tr>
+                        @endif
                     @endif
                    
                 </table>

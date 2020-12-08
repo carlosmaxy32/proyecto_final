@@ -1,15 +1,11 @@
 <x-app-layout>
 <x-slot name="header">
+<link href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 <link href="{{ asset('css/heroic-features.css') }}" rel="stylesheet">
-        @if(Auth::user()->tipousuario == 1)
+<link href="{{ asset('css/heroic-features.css') }}" rel="stylesheet">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mis Dentistas') }}
-        </h2>
-        @elseif(Auth::user()->tipousuario == 2)
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mis Pacientes') }}
-        </h2>
-        @endif
+            {{ __('Mis Citas') }}
+        </h2>        
 </x-slot>
 
     <div class="py-12">

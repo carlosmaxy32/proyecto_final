@@ -49,7 +49,11 @@ class ConsultorioController extends Controller
             'estado'=>'required|min:5|max:40|regex:/^[a-zA-Z\s]+$/u',    
         ]);
         Consultorio::create($request->all());
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))
+        ->with([
+            'mensaje'=>'Información guardada correctamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**
@@ -105,7 +109,11 @@ class ConsultorioController extends Controller
             'estado' => $request->estado,            
         ])->save();
         //Consultorio::where('user_id', $consultorio->user_id)->update($request->except('_method', '_token'));
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))
+        ->with([
+            'mensaje'=>'Información guardada correctamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**

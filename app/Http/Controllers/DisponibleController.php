@@ -51,7 +51,11 @@ class DisponibleController extends Controller
             'activo'=>'required|numeric',    
         ]);
         Disponible::create($request->all());
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))
+        ->with([
+            'mensaje'=>'Se ha creado la disponibilidad exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**
@@ -99,7 +103,11 @@ class DisponibleController extends Controller
             'activo'=>'required|numeric',    
         ]);
         Disponible::where('user_id', $disponible->user_id)->update($request->except('_method', '_token'));
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))
+        ->with([
+            'mensaje'=>'Cambió la disponibilidad exitosamente',
+            'alert-type'=>'alert-success',
+        ]);
     }
 
     /**
@@ -108,8 +116,8 @@ class DisponibleController extends Controller
      * @param  \App\Models\Disponible  $disponible
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Disponible $disponible)
+  /*  public function destroy(Disponible $disponible)
     {
         //
-    }
+    }*/
 }

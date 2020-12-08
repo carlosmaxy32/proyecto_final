@@ -1,3 +1,5 @@
+<link href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ asset('css/heroic-features.css') }}" rel="stylesheet">
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
     <div>
         <x-jet-application-logo class="block h-12 w-auto" />
