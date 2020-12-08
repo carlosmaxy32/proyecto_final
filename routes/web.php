@@ -24,13 +24,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::resource('usuario', UsuarioController::class);
-Route::resource('consultorio', ConsultorioController::class);
-Route::resource('disponible', DisponibleController::class);
-Route::resource('contactos', Dentista_pacienteController::class);
-Route::resource('cita', CitaController::class);
-Route::resource('make', CitadosController::class);
+/* No se decita debido a la configuración jetstream */
+//Route::resource('usuario', UsuarioController::class);
+Route::resource('consultorio', ConsultorioController::class)->middleware('auth');
+Route::resource('disponible', DisponibleController::class)->middleware('auth');
+Route::resource('contactos', Dentista_pacienteController::class)->middleware('auth');
+Route::resource('cita', CitaController::class)->middleware('auth');
+Route::resource('make', CitadosController::class)->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
