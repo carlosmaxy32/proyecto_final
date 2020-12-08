@@ -15,7 +15,7 @@ class Servicio extends Model
 
     public function getServicioAttribute()
     {
-        return $this->nombre . " ". $this->descripcion;
+        return $this->nombre . ": ". $this->descripcion;
     }
 
     public function citas()

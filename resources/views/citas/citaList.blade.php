@@ -32,7 +32,7 @@
                             <tr>
                                 @foreach($usuarios as $usuario)
                                     @if($usuario->id == $contacto->paciente_id)
-                                        <td>{{ $usuario->nombre_completo }}</td>
+                                        <td>{{ $usuario->nombre_completo }}</td>                               
                                     @elseif($usuario->id == $contacto->dentista_id)
                                         <td>{{ $usuario->nombre_completo }}</td>
                                     @endif
@@ -40,6 +40,7 @@
                                 <td>{{ $cita->fecha }} </td>
                                 <td>{{ $cita->hora }}</td>
                                 <td>{{ $cita->servicio->servicio }}</td>
+                                <td><a href="{{ route('cita.show', [$cita]) }}">Click aquí para detalles</a></td>
                             </tr>
                             @endif
                         @endforeach    

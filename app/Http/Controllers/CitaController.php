@@ -26,10 +26,9 @@ class CitaController extends Controller
             $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
         else if(Auth::user()->tipousuario == 2)
             $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
-        $servicios = Servicio::all();        
         $usuarios = User::all();
         $citas = Cita::all();
-        return view('citas.citaList', compact('contactos', 'servicios', 'usuarios', 'citas'));
+        return view('citas.citaList', compact('contactos', 'usuarios', 'citas'));
         
     }
 
@@ -60,9 +59,18 @@ class CitaController extends Controller
      * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function show(Cita $cita)
+    public function show(int $id)
     {
-        //
+        $cita = Cita::find($id);
+        
+        if(Auth::user()->tipousuario == 1)
+            $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
+        else if(Auth::user()->tipousuario == 2)
+            $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
+        $usuarios = User::all();
+        $consultorios = Consultorio::all();
+        
+        return view('citas.citaShow', compact('contactos', 'consultorios', 'usuarios', 'cita'));
     }
 
     /**
