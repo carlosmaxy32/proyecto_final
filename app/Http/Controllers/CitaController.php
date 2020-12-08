@@ -27,7 +27,7 @@ class CitaController extends Controller
         else if(Auth::user()->tipousuario == 2)
             $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
         $usuarios = User::all();
-        $citas = Cita::all();
+        $citas = Cita::with('servicio')->get(); //Eager Loading
         return view('citas.citaList', compact('contactos', 'usuarios', 'citas'));
         
     }
