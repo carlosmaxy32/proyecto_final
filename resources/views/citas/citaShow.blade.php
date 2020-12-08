@@ -68,7 +68,7 @@
                         <td>{{ $cita->servicio->servicio }}</td>                        
                     </tr>                   
                 </table>
-                <form action="{{ route('cita.destroy', 'cita' ) }}"  method="POST">
+                <form action="{{ route('cita.destroy', [$cita] ) }}"  method="POST">
                         @method('DELETE')
                         @csrf
                         <div class="flex items-center justify-end mt-4" style = "float: right">

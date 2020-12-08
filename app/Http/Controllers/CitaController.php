@@ -39,7 +39,15 @@ class CitaController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Cita::class);
+        /*Descomentar paraaplicar politica */
+        //$this->authorize('index', Cita::class);
+        if(Auth::user()->tipousuario == 1)
+            $contactos = Dentista_paciente::where('paciente_id', Auth::id())->get();
+        else if(Auth::user()->tipousuario == 2)
+            $contactos = Dentista_paciente::where('dentista_id', Auth::id())->get();
+        $usuarios = User::all();
+        $servicios = Servicio::all();
+        return view('citas.citaList', compact('contactos', 'usuarios', 'servicios'));
     }
 
     /**
@@ -102,8 +110,10 @@ class CitaController extends Controller
      * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cita $cita)
+    public function destroy(int $id)
     {
-        //
+        $cita = Cita::find($id);
+        $cita->delete();
+        return redirect(route('cita.index'));
     }
 }

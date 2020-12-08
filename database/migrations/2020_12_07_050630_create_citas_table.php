@@ -20,6 +20,7 @@ class CreateCitasTable extends Migration
             $table->time('hora');
             $table->foreignId('servicio_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
