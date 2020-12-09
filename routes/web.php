@@ -29,6 +29,8 @@ Route::get('/inicio', function () {
     return view('informacion.inicio');
 })->name('inicio');
 
+/*El CRUD de usuarios hecho desde el principio no se utilizó debido a la configuración de jestream */
+
 Route::resource('consultorio', ConsultorioController::class)->middleware('auth');
 Route::resource('disponible', DisponibleController::class)->middleware('auth');
 Route::resource('contactos', Dentista_pacienteController::class)->middleware('auth');
