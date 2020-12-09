@@ -24,13 +24,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* No se decita debido a la configuración jetstream */
-Route::resource('usuario', UsuarioController::class);
+/*Rutas de Inicio */
+Route::get('/inicio', function () {
+    return view('informacion.inicio');
+})->name('inicio');
+
 Route::resource('consultorio', ConsultorioController::class)->middleware('auth');
 Route::resource('disponible', DisponibleController::class)->middleware('auth');
 Route::resource('contactos', Dentista_pacienteController::class)->middleware('auth');
 Route::resource('cita', CitaController::class)->middleware('auth');
 Route::resource('make', CitadosController::class)->middleware('auth');
+
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
