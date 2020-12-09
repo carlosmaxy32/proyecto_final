@@ -38,13 +38,13 @@
             <a class="nav-link" href="#">Aceca de</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Servicios</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#">Contacto</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">Ingresar</a>
+            <a class="nav-link" href="{{ route('login') }}">Ingresar</a>                        
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">Registrar</a>            
           </li>
         </ul>
       </div>

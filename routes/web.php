@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 /* No se decita debido a la configuración jetstream */
-//Route::resource('usuario', UsuarioController::class);
+Route::resource('usuario', UsuarioController::class);
 Route::resource('consultorio', ConsultorioController::class)->middleware('auth');
 Route::resource('disponible', DisponibleController::class)->middleware('auth');
 Route::resource('contactos', Dentista_pacienteController::class)->middleware('auth');

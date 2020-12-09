@@ -1,8 +1,7 @@
 <x-app-layout>
 <x-slot name="header">
 <link href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('css/heroic-features.css') }}" rel="stylesheet">
-<link href="{{ asset('css/heroic-features.css') }}" rel="stylesheet">
+<link href="{{ asset('css/table.css') }}" rel="stylesheet">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Mis Citas') }}
         </h2>        

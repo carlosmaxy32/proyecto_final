@@ -1,6 +1,5 @@
 <x-app-layout>
 <x-slot name="header">
-<link href="{{ asset('css/heroic-features.css') }}" rel="stylesheet">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Elige su contacto') }}
         </h2>        

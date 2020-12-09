@@ -1,3 +1,4 @@
+<META HTTP-EQUIV="REFRESH" CONTENT="0;URL={{route('dashboard')}}">
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
